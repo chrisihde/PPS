@@ -7,6 +7,7 @@ import Enums.PrintType;
 
 public class Print {
 	
+	int id;
 	int quantity;
 	boolean isStandardPrint;
 	PrintSize size;
@@ -26,6 +27,14 @@ public class Print {
 		return getIsStandardPrint();
 	}	
 	
+	public void setId(int id) {
+		this.id = id;
+	}
+	
+	public int getId() {
+		return this.id;
+	}
+	
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
@@ -35,7 +44,7 @@ public class Print {
 	}
 	
 	public void setIsStandardPrint(boolean isStandard) {
-		this.isStandardPrint = isStandard;
+		this.isStandardPrint = isStandard;		
 	}
 	
 	public boolean getIsStandardPrint() {

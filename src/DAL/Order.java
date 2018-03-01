@@ -42,4 +42,18 @@ public class Order {
 		this.listOfPrints.add(print);
 		return this;
 	}
+	
+	public Order removePrint(Print print) {
+		
+		for(int i = 0; i < this.listOfPrints.size(); i++)
+		{
+			Print p = this.listOfPrints.get(i);
+			
+			if(p.getId() == print.getId()) {
+				this.listOfPrints.remove(i);
+			}
+		}
+		
+		return this;
+	}
 }
