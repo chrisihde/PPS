@@ -37,4 +37,9 @@ public class Order {
 		setTotalOrderCost(orderCost);
 		return getTotalOrderCost();
 	}
+	
+	public Order addPrint(Print print) {
+		this.listOfPrints.add(print);
+		return this;
+	}
 }
