@@ -7,8 +7,10 @@ import java.util.List;
 import java.util.ArrayList;
 
 import DAL.Order;
+import DAL.Print;
 import Enums.Button;
 import Enums.Dropdown;
+import Enums.PrintSize;
 
 public class PPSFrame extends JFrame {
 
@@ -33,7 +35,14 @@ public class PPSFrame extends JFrame {
         addPrint.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                Print print = new Print();
 
+                String sizeValue = (String)dropdowns.get(Dropdown.PRINT_SIZE.getIndex()).getSelectedItem();
+                PrintSize size = PrintSize.getFromString(sizeValue);
+
+                print.setSize(size);
+
+                order.addPrint(print);
             }
         });
 
