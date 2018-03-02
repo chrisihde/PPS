@@ -11,6 +11,7 @@ import DAL.Order;
 import DAL.Print;
 import Enums.Button;
 import Enums.Dropdown;
+import Enums.PrintFinish;
 import Enums.PrintSize;
 
 public class PPSFrame extends JFrame {
@@ -23,6 +24,7 @@ public class PPSFrame extends JFrame {
     // subpanels
     private static JPanel printSettingsLabelPanel;
     private static JPanel printSizePanel;
+    private static JPanel printFinishPanel;
     private static JPanel addPrintPanel;
 
     //widgets
@@ -48,10 +50,12 @@ public class PPSFrame extends JFrame {
         // each row in the left window
         printSettingsLabelPanel = new JPanel();
         printSizePanel = new JPanel();
+        printFinishPanel = new JPanel();
         addPrintPanel = new JPanel();
         printSettingsPanel.setLayout(new GridLayout(4,2));
         printSettingsPanel.add(printSettingsLabelPanel);
         printSettingsPanel.add(printSizePanel);
+        printSettingsPanel.add(printFinishPanel);
         printSettingsPanel.add(addPrintPanel);
 
         // add left and right sides to main window
@@ -63,17 +67,25 @@ public class PPSFrame extends JFrame {
     }
 
     private static void createButtons() {
+        // create 'Add Print' button
         JButton addPrint = new JButton("Add Print");
         addPrint.setBounds(150, 60, 100, 30);
         addPrint.addActionListener(new ActionListener() {
+            // 'Add Print' button functionality
             @Override
             public void actionPerformed(ActionEvent e) {
                 Print print = new Print();
 
+                // get size setting
                 String sizeValue = (String)dropdowns.get(Dropdown.PRINT_SIZE.getIndex()).getSelectedItem();
                 PrintSize size = PrintSize.getFromString(sizeValue);
 
+                // get finish setting
+                String finishValue = (String)dropdowns.get(Dropdown.PRINT_FINISH.getIndex()).getSelectedItem();
+                PrintFinish finish = PrintFinish.getFromString(sizeValue);
+
                 print.setSize(size);
+                print.setFinish(finish);
 
                 order.addPrint(print);
             }
@@ -87,18 +99,32 @@ public class PPSFrame extends JFrame {
     }
 
     private static void createDropdowns() {
+        // create dropdown menu for print size
         JComboBox<String> printSizes = new JComboBox<>(Dropdown.PRINT_SIZE.getOptions());
+        // default option for this menu
         printSizes.setSelectedIndex(0);
         printSizes.addActionListener(new PrintSizeEventHandler());
         printSizes.setBounds(400, 60, 100, 30);
 
+        // create dropdown menu for print finish
+        JComboBox<String> printFinishes = new JComboBox<>(Dropdown.PRINT_FINISH.getOptions());
+        // default option for this menu
+        printFinishes.setSelectedIndex(1);
+        printFinishes.addActionListener(new PrintFinishEventHandler());
+        printFinishes.setBounds(400, 60, 100, 30);
+
         dropdowns.add(Dropdown.PRINT_SIZE.getIndex(), printSizes);
+        dropdowns.add(Dropdown.PRINT_FINISH.getIndex(), printFinishes);
     }
 
     private static void addDropdownsToPanel() {
         // print size
         printSizePanel.add(new JLabel("Print Size: "));
         printSizePanel.add(dropdowns.get(Dropdown.PRINT_SIZE.getIndex()));
+
+        // print finish
+        printFinishPanel.add(new JLabel("Print Finish: "));
+        printFinishPanel.add(dropdowns.get(Dropdown.PRINT_FINISH.getIndex()));
     }
 
     private static void setupSettingsPanel() {
