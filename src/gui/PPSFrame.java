@@ -8,11 +8,13 @@ import java.util.ArrayList;
 
 import DAL.Print;
 import Enums.Button;
+import Enums.Dropdown;
 
 public class PPSFrame extends JFrame {
 
     private static JPanel panel;
     private static List<JButton> buttons = new ArrayList<>();
+    private static List<JComboBox> dropdowns = new ArrayList<>();
     private static List<Print> prints = new ArrayList<>();
 
     private PPSFrame() {
@@ -42,10 +44,25 @@ public class PPSFrame extends JFrame {
         panel.add(buttons.get(Button.ADD_PRINT.getValue()));
     }
 
+    private static void createDropdowns() {
+        JComboBox<String> printSizes = new JComboBox<>(Dropdown.PRINT_SIZE.getOptions());
+        printSizes.setSelectedIndex(0);
+        printSizes.addActionListener(new PrintSizeEventHandler());
+        printSizes.setBounds(400, 60, 100, 30);
+
+        dropdowns.add(Dropdown.PRINT_SIZE.getIndex(), printSizes);
+    }
+
+    private static void addDropdownsToPanel() {
+        panel.add(dropdowns.get(Dropdown.PRINT_SIZE.getIndex()));
+    }
+
     public static void main(String[] args) {
         PPSFrame frame = new PPSFrame();
         PPSFrame.createButtons();
         PPSFrame.addButtonsToPanel();
+        PPSFrame.createDropdowns();
+        PPSFrame.addDropdownsToPanel();
         frame.setVisible(true);
     }
 }
