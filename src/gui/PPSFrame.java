@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 import java.util.List;
 import java.util.ArrayList;
 
-import DAL.Print;
+import DAL.Order;
 import Enums.Button;
 import Enums.Dropdown;
 
@@ -15,7 +15,7 @@ public class PPSFrame extends JFrame {
     private static JPanel panel;
     private static List<JButton> buttons = new ArrayList<>();
     private static List<JComboBox> dropdowns = new ArrayList<>();
-    private static List<Print> prints = new ArrayList<>();
+    private static Order order = new Order();
 
     private PPSFrame() {
         setSize(800, 600);
