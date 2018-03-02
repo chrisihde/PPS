@@ -14,7 +14,9 @@ import Enums.PrintSize;
 
 public class PPSFrame extends JFrame {
 
-    private static JPanel panel;
+    private static JPanel containerPanel;
+    private static JPanel printSettingsPanel;
+    private static JPanel printInfoPanel;
     private static List<JButton> buttons = new ArrayList<>();
     private static List<JComboBox> dropdowns = new ArrayList<>();
     private static Order order = new Order();
@@ -24,9 +26,16 @@ public class PPSFrame extends JFrame {
         setTitle("PPS");
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
-        panel = new JPanel();
-        getContentPane().add(panel);
-        panel.setLayout(null);
+        containerPanel = new JPanel();
+        containerPanel.setLayout(new BoxLayout(containerPanel, BoxLayout.X_AXIS));
+
+        printSettingsPanel = new JPanel();
+        printInfoPanel = new JPanel();
+
+        containerPanel.add(printSettingsPanel);
+        containerPanel.add(printInfoPanel);
+
+        getContentPane().add(containerPanel);
     }
 
     private static void createButtons() {
@@ -50,7 +59,7 @@ public class PPSFrame extends JFrame {
     }
 
     private static void addButtonsToPanel() {
-        panel.add(buttons.get(Button.ADD_PRINT.getValue()));
+        printSettingsPanel.add(buttons.get(Button.ADD_PRINT.getValue()));
     }
 
     private static void createDropdowns() {
@@ -63,7 +72,11 @@ public class PPSFrame extends JFrame {
     }
 
     private static void addDropdownsToPanel() {
-        panel.add(dropdowns.get(Dropdown.PRINT_SIZE.getIndex()));
+        printSettingsPanel.add(dropdowns.get(Dropdown.PRINT_SIZE.getIndex()));
+    }
+
+    private static void setupInfoPanel() {
+        printInfoPanel.add(new JLabel("test"));
     }
 
     public static void main(String[] args) {
@@ -72,6 +85,7 @@ public class PPSFrame extends JFrame {
         PPSFrame.addButtonsToPanel();
         PPSFrame.createDropdowns();
         PPSFrame.addDropdownsToPanel();
+        PPSFrame.setupInfoPanel();
         frame.setVisible(true);
     }
 }
