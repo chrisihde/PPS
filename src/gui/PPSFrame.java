@@ -1,7 +1,6 @@
 package gui;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
@@ -9,10 +8,8 @@ import java.util.ArrayList;
 
 import DAL.Order;
 import DAL.Print;
+import Enums.*;
 import Enums.Button;
-import Enums.Dropdown;
-import Enums.PrintFinish;
-import Enums.PrintSize;
 
 public class PPSFrame extends JFrame {
 
@@ -25,6 +22,7 @@ public class PPSFrame extends JFrame {
     private static JPanel printSettingsLabelPanel;
     private static JPanel printSizePanel;
     private static JPanel printFinishPanel;
+    private static JPanel printProcessingTimePanel;
     private static JPanel addPrintPanel;
 
     //widgets
@@ -51,11 +49,13 @@ public class PPSFrame extends JFrame {
         printSettingsLabelPanel = new JPanel();
         printSizePanel = new JPanel();
         printFinishPanel = new JPanel();
+        printProcessingTimePanel = new JPanel();
         addPrintPanel = new JPanel();
-        printSettingsPanel.setLayout(new GridLayout(4,2));
+        printSettingsPanel.setLayout(new BoxLayout(printSettingsPanel, BoxLayout.Y_AXIS));
         printSettingsPanel.add(printSettingsLabelPanel);
         printSettingsPanel.add(printSizePanel);
         printSettingsPanel.add(printFinishPanel);
+        printSettingsPanel.add(printProcessingTimePanel);
         printSettingsPanel.add(addPrintPanel);
 
         // add left and right sides to main window
@@ -84,8 +84,13 @@ public class PPSFrame extends JFrame {
                 String finishValue = (String)dropdowns.get(Dropdown.PRINT_FINISH.getIndex()).getSelectedItem();
                 PrintFinish finish = PrintFinish.getFromString(finishValue);
 
+                // get processing time setting
+                String timeValue = (String)dropdowns.get(Dropdown.PRINT_TIME.getIndex()).getSelectedItem();
+                PrintProcessingTime time = PrintProcessingTime.getFromString(timeValue);
+
                 print.setSize(size);
                 print.setFinish(finish);
+                print.setProcessingTime(time);
 
                 order.addPrint(print);
             }
@@ -113,8 +118,16 @@ public class PPSFrame extends JFrame {
         printFinishes.addActionListener(new PrintFinishEventHandler());
         printFinishes.setBounds(400, 60, 100, 30);
 
+        // create dropdown menu for print type
+        JComboBox<String> printTimes = new JComboBox<>(Dropdown.PRINT_TIME.getOptions());
+        // default option for this menu
+        printTimes.setSelectedIndex(1);
+        printTimes.addActionListener(new PrintProcessingTimeEventHandler());
+        printTimes.setBounds(400, 60, 100, 30);
+
         dropdowns.add(Dropdown.PRINT_SIZE.getIndex(), printSizes);
         dropdowns.add(Dropdown.PRINT_FINISH.getIndex(), printFinishes);
+        dropdowns.add(Dropdown.PRINT_TIME.getIndex(), printTimes);
     }
 
     private static void addDropdownsToPanel() {
@@ -125,6 +138,10 @@ public class PPSFrame extends JFrame {
         // print finish
         printFinishPanel.add(new JLabel("Print Finish: "));
         printFinishPanel.add(dropdowns.get(Dropdown.PRINT_FINISH.getIndex()));
+
+        // print time
+        printProcessingTimePanel.add(new JLabel("Print Processing Time: "));
+        printProcessingTimePanel.add(dropdowns.get(Dropdown.PRINT_TIME.getIndex()));
     }
 
     private static void setupSettingsPanel() {
