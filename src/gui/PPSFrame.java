@@ -82,7 +82,7 @@ public class PPSFrame extends JFrame {
 
                 // get finish setting
                 String finishValue = (String)dropdowns.get(Dropdown.PRINT_FINISH.getIndex()).getSelectedItem();
-                PrintFinish finish = PrintFinish.getFromString(sizeValue);
+                PrintFinish finish = PrintFinish.getFromString(finishValue);
 
                 print.setSize(size);
                 print.setFinish(finish);
