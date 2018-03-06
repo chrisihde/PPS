@@ -1,19 +1,19 @@
-package DAL;
+package dal;
 
-import Enums.PrintFinish;
-import Enums.PrintProcessingTime;
-import Enums.PrintSize;
-import Enums.PrintType;
+import enums.PrintFinish;
+import enums.PrintProcessingTime;
+import enums.PrintSize;
+import enums.PrintType;
 
 public class Print {
 	
-	int id;
-	int quantity;
-	boolean isStandardPrint;
-	PrintSize size;
-	PrintFinish finish;
-	PrintType type;
-	PrintProcessingTime processingTime;
+	private int id;
+	private int quantity;
+	private boolean isStandardPrint;
+	private PrintSize size;
+	private PrintFinish finish;
+	private PrintType type;
+	private PrintProcessingTime processingTime;
 	
 	public boolean IsStandardPrint(PrintSize printSize, PrintFinish printFinish, PrintProcessingTime printProcessingTime) {
 		boolean isStandardPrint = false;

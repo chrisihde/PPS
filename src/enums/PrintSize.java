@@ -1,17 +1,18 @@
-package Enums;
+package enums;
 
-public enum PrintFinish {
-    GLOSSY ("Glossy"),
-	MATTE ("Matte");
+public enum PrintSize {
+    SMALL ("4x6"),
+    MEDIUM ("5x7"),
+    LARGE ("8x10");
 
     private String value;
 
-    PrintFinish(String value){
+    PrintSize(String value){
         this.value = value;
     }
 
-    public static PrintFinish getFromString(String s) {
-        for (PrintFinish p : PrintFinish.values()) {
+    public static PrintSize getFromString(String s) {
+        for (PrintSize p : PrintSize.values()) {
             if (p.value.equalsIgnoreCase(s)) {
                 return p;
             }

@@ -6,10 +6,10 @@ import java.awt.event.ActionListener;
 import java.util.List;
 import java.util.ArrayList;
 
-import DAL.Order;
-import DAL.Print;
-import Enums.*;
-import Enums.Button;
+import dal.Order;
+import dal.Print;
+import enums.*;
+import enums.Button;
 
 public class PPSFrame extends JFrame {
 
@@ -32,7 +32,7 @@ public class PPSFrame extends JFrame {
     // data
     private static Order order = new Order();
 
-    private PPSFrame() {
+    public PPSFrame() {
         setSize(800, 600);
         setTitle("PPS");
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -144,7 +144,7 @@ public class PPSFrame extends JFrame {
         printProcessingTimePanel.add(dropdowns.get(Dropdown.PRINT_TIME.getIndex()));
     }
 
-    private static void setupSettingsPanel() {
+    public static void setupSettingsPanel() {
         printSettingsLabelPanel.add(new JLabel("Print Settings: "));
         PPSFrame.createButtons();
         PPSFrame.addButtonsToPanel();
@@ -152,14 +152,7 @@ public class PPSFrame extends JFrame {
         PPSFrame.addDropdownsToPanel();
     }
 
-    private static void setupInfoPanel() {
+    public static void setupInfoPanel() {
         printInfoPanel.add(new JLabel("Print Info:"));
-    }
-
-    public static void main(String[] args) {
-        PPSFrame frame = new PPSFrame();
-        PPSFrame.setupSettingsPanel();
-        PPSFrame.setupInfoPanel();
-        frame.setVisible(true);
     }
 }

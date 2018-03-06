@@ -1,4 +1,4 @@
-package Enums;
+package enums;
 
 public enum PrintProcessingTime {
     ONEHOUR ("1 Hour"),

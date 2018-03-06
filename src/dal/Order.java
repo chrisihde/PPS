@@ -1,14 +1,14 @@
-package DAL;
+package dal;
 
 import java.util.ArrayList;
 
 public class Order {
-	ArrayList<Print> listOfPrints;
-	double orderDiscount;
-	double totalOrderCost;
+	private ArrayList<Print> listOfPrints;
+	private double orderDiscount;
+	private double totalOrderCost;
 	
 	public Order() {
-		listOfPrints = new ArrayList<Print>();
+		listOfPrints = new ArrayList<>();
 		orderDiscount = 0.00;
 		totalOrderCost = 0.00;
 	}

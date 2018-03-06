@@ -1,7 +1,6 @@
-import Control.PPSControl;
-import Model.PPSModel;
-import View.PPSView;
-import gui.PPSFrame;
+import control.PPSControl;
+import model.PPSModel;
+import view.PPSView;
 
 import javax.swing.*;
 
