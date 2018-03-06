@@ -5,6 +5,11 @@ import javax.swing.*;
 public class ViewPrints {
 
     private static final String PANEL_LABEL = "Print Settings";
+    private static final String PRINT_SIZE_LABEL = "Size: ";
+    private static final String PRINT_FINISH_LABEL = "Finish: ";
+    private static final String PRINT_PROCTIMES_LABEL = "Processing Time: ";
+    private static final String ADD_PRINT_BUTTON_LABEL = "Add Print";
+
     private static final String[][] DROPDOWN_MENU_OPTIONS =
             {{ "4x6", "5x7", "8x10" },
              { "Glossy", "Matte" },
@@ -12,10 +17,6 @@ public class ViewPrints {
     private static final int PRINT_SIZES = 0;
     private static final int PRINT_FINISHES = 1;
     private static final int PRINT_PROCTIMES = 2;
-    private static final String PRINT_SIZE_LABEL = "Size: ";
-    private static final String PRINT_FINISH_LABEL = "Finish: ";
-    private static final String PRINT_PROCTIMES_LABEL = "Processing Time: ";
-    private static final String ADD_PRINT_BUTTON_LABEL = "Add Print";
 
     private JPanel printsPanel = new JPanel();
     private JPanel labelPanel = new JPanel();
@@ -23,12 +24,14 @@ public class ViewPrints {
     private JPanel finishPanel = new JPanel();
     private JPanel procTimePanel = new JPanel();
     private JPanel buttonPanel = new JPanel();
+
     private JComboBox<String> sizeOptions =
             new JComboBox<>(DROPDOWN_MENU_OPTIONS[PRINT_SIZES]);
     private JComboBox<String> finishOptions =
             new JComboBox<>(DROPDOWN_MENU_OPTIONS[PRINT_FINISHES]);
     private JComboBox<String> procTimeOptions =
             new JComboBox<>(DROPDOWN_MENU_OPTIONS[PRINT_PROCTIMES]);
+
     private JButton addPrintButton = new JButton(ADD_PRINT_BUTTON_LABEL);
 
     ViewPrints() {
