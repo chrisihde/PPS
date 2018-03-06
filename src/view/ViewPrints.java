@@ -32,7 +32,7 @@ public class ViewPrints {
     private JComboBox<String> procTimeOptions =
             new JComboBox<>(DROPDOWN_MENU_OPTIONS[PRINT_PROCTIMES]);
 
-    private JButton addPrintButton = new JButton(ADD_PRINT_BUTTON_LABEL);
+    private JButton addPrintButton = new JButton();
 
     ViewPrints() {
         labelPanel.add(new JLabel(PANEL_LABEL));
@@ -42,6 +42,7 @@ public class ViewPrints {
         finishPanel.add(finishOptions);
         procTimePanel.add(new JLabel(PRINT_PROCTIMES_LABEL));
         procTimePanel.add(procTimeOptions);
+        addPrintButton.add(new JLabel(ADD_PRINT_BUTTON_LABEL));
         buttonPanel.add(addPrintButton);
 
         printsPanel.setLayout(new BoxLayout(printsPanel, BoxLayout.Y_AXIS));
