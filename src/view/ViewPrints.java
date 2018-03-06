@@ -55,4 +55,12 @@ public class ViewPrints {
     public JComponent getComponent() {
         return printsPanel;
     }
+
+    public String getSizeOption() {
+        return (String)sizeOptions.getSelectedItem();
+    }
+
+    public void setAddPrintButtonAction(Action a) {
+        addPrintButton.setAction(a);
+    }
 }

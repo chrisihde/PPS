@@ -1,7 +1,11 @@
 package view;
 
+import model.PrintOptions;
+
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class PPSView {
 
@@ -20,5 +24,18 @@ public class PPSView {
         frame.pack();
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
+    }
+
+    public PrintOptions getPrintOptions() {
+        ArrayList<String> options = new ArrayList<>();
+        options.add(prints.getSizeOption());
+        Object[] optionsArray = options.toArray();
+        String[] optionsStringArray =
+                Arrays.copyOf(optionsArray, optionsArray.length, String[].class);
+        return new PrintOptions(optionsStringArray);
+    }
+
+    public void setAddPrintAction(Action a) {
+        prints.setAddPrintButtonAction(a);
     }
 }
