@@ -15,6 +15,7 @@ public class PrintOptions {
     }
 
     public PrintOptions(String[] options) {
+        // TODO: safety check for array size
         printOptions = new ArrayList<>();
         printOptions.add(SIZE, options[SIZE]);
 //        printOptions.add(FINISH, options[FINISH]);
