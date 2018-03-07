@@ -1,7 +1,10 @@
 package control;
 
 import dal.Print;
+import enums.PrintFinish;
+import enums.PrintProcessingTime;
 import enums.PrintSize;
+import enums.PrintType;
 import model.PPSModel;
 import model.PrintOptions;
 import view.PPSView;
@@ -27,6 +30,23 @@ public class AddPrintAction extends AbstractAction {
 
         String sizeOption = printOptions.getSizeOption();
         print.setSize(PrintSize.getFromString(sizeOption));
+
+        String finishOption = printOptions.getFinishOption();
+        print.setFinish(PrintFinish.getFromString(finishOption));
+
+        String procTimeOption = printOptions.getProcTimeOption();
+        print.setProcessingTime(PrintProcessingTime.getFromString(procTimeOption));
+
+        // TODO: replace "magic strings" with constants
+        if (sizeOption.equalsIgnoreCase("4x6") &&
+            finishOption.equalsIgnoreCase("Matte") &&
+            procTimeOption.equalsIgnoreCase("Next Day"))
+        {
+            print.setType(PrintType.getFromString("Standard"));
+        }
+        else {
+            print.setType(PrintType.getFromString("Custom"));
+        }
 
         model.addPrintToOrder(print);
     }

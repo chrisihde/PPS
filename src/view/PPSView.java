@@ -29,6 +29,8 @@ public class PPSView {
     public PrintOptions getPrintOptions() {
         ArrayList<String> options = new ArrayList<>();
         options.add(prints.getSizeOption());
+        options.add(prints.getFinishOption());
+        options.add(prints.getProcTimeOption());
 
         // needed to convert Object[] to String[]
         Object[] optionsArray = options.toArray();

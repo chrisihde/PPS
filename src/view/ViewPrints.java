@@ -57,11 +57,19 @@ public class ViewPrints {
         return printsPanel;
     }
 
+    public void setAddPrintButtonAction(Action a) {
+        addPrintButton.setAction(a);
+    }
+
     public String getSizeOption() {
         return (String)sizeOptions.getSelectedItem();
     }
 
-    public void setAddPrintButtonAction(Action a) {
-        addPrintButton.setAction(a);
+    public String getFinishOption() {
+        return (String)finishOptions.getSelectedItem();
+    }
+
+    public String getProcTimeOption() {
+        return (String)procTimeOptions.getSelectedItem();
     }
 }
