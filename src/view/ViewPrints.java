@@ -25,7 +25,7 @@ public class ViewPrints {
     private JPanel procTimePanel = new JPanel();
     private JPanel buttonPanel = new JPanel();
 
-    private JComboBox<String> sizeOptions =
+    public JComboBox<String> sizeOptions =
             new JComboBox<>(DROPDOWN_MENU_OPTIONS[PRINT_SIZES]);
     private JComboBox<String> finishOptions =
             new JComboBox<>(DROPDOWN_MENU_OPTIONS[PRINT_FINISHES]);
