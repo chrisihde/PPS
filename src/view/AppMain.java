@@ -12,7 +12,6 @@ import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JSpinner;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 
 import javax.swing.JTable;
@@ -22,13 +21,8 @@ import javax.swing.table.DefaultTableModel;
 import dal.Order;
 import dal.Print;
 import javax.swing.JPanel;
-import java.awt.GridLayout;
-import java.awt.CardLayout;
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
-import javax.swing.BoxLayout;
-import java.awt.FlowLayout;
-import javax.swing.JToggleButton;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JTextField;
 
 public class AppMain {
@@ -64,6 +58,7 @@ public class AppMain {
 	/**
 	 * Initialize the contents of the frame.
 	 */
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	private void initialize() {
 		frmPhotoPrintShop = new JFrame();
 		frmPhotoPrintShop.setTitle("Photo Print Shop");
@@ -124,6 +119,14 @@ public class AppMain {
 		btnAddPrint.setBackground(new Color(175, 238, 238));
 		btnAddPrint.setForeground(new Color(0, 0, 0));
 		btnAddPrint.setFont(new Font("Arial", Font.BOLD, 13));
+		btnAddPrint.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
 		panel.add(btnAddPrint);
 		
 		JScrollPane scrollPane = new JScrollPane();
@@ -133,7 +136,7 @@ public class AppMain {
 		String[] columnNames = new String[] {"Quantity", "Size", "Finish", "Processing Time", "Cost"};	
 		DefaultTableModel tableModel = new DefaultTableModel(columnNames, 0);
 		for(Print print : order.listOfPrints) {
-			Vector rowData = new Vector();
+			Vector<Comparable> rowData = new Vector<Comparable>();
 			rowData.add(print.getQuantity());
 			rowData.add(print.getSize());
 			rowData.add(print.getPrintFinish());
@@ -177,4 +180,6 @@ public class AppMain {
 		lblNewLabel_3.setBounds(670, 34, 74, 14);
 		panel_1.add(lblNewLabel_3);
 	}
+	
+	
 }
