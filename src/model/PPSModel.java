@@ -5,9 +5,15 @@ import dal.Print;
 
 public class PPSModel {
 
-    private Order order = new Order();
+    public Order order;
 
-    public void addPrintToOrder(Print p) {
-        order.addPrint(p);
+    public PPSModel() {
+    	order = new Order();
     }
+    
+    public void addPrintToOrder(Print p) {
+        this.order.addPrint(p);
+    }
+    
+    
 }

@@ -2,13 +2,25 @@ package dal;
 
 import java.util.ArrayList;
 
+import enums.PrintFinish;
+import enums.PrintProcessingTime;
+import enums.PrintSize;
+
 public class Order {
-	private ArrayList<Print> listOfPrints;
+	public ArrayList<Print> listOfPrints;
 	private double orderDiscount;
 	private double totalOrderCost;
+	private String discountCode;
 	
 	public Order() {
+		Print test = new Print();
+		test.setQuantity(1);
+		test.setFinish(PrintFinish.MATTE);
+		test.setSize(PrintSize.MEDIUM);
+		test.setId(1);
+		test.setProcessingTime(PrintProcessingTime.NEXTDAY);
 		listOfPrints = new ArrayList<>();
+		listOfPrints.add(test);
 		orderDiscount = 0.00;
 		totalOrderCost = 0.00;
 	}
@@ -27,6 +39,10 @@ public class Order {
 	
 	public double getTotalOrderCost() {
 		return totalOrderCost;
+	}
+	
+	public void setDiscountCode(String code) {
+		discountCode = code;
 	}
 	
 	public double calculateTotalOrderCost() {

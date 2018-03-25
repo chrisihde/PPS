@@ -17,9 +17,9 @@ public class AddPrintAction extends AbstractAction {
     private PPSView view;
     private PPSModel model;
 
-    AddPrintAction(PPSView view, PPSModel model) {
+    AddPrintAction(PPSView view2, PPSModel model) {
         super();
-        this.view = view;
+        this.view = view2;
         this.model = model;
     }
 
@@ -47,7 +47,9 @@ public class AddPrintAction extends AbstractAction {
         else {
             print.setType(PrintType.getFromString("Custom"));
         }
-
+        
         model.addPrintToOrder(print);
+        
+        view.refreshTable();
     }
 }

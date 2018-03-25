@@ -7,10 +7,11 @@ import javax.swing.*;
 public class Main {
 
         private static void createAndShowGui() {
-            PPSView view = new PPSView("PPS");
-            PPSModel model = new PPSModel();
+        	PPSModel model = new PPSModel();
+            PPSView view = new PPSView("Photo Shop", model);
+            //PPSModel model = new PPSModel();
             PPSControl control = new PPSControl(view, model);
-
+            
             control.showView(true);
         }
 
