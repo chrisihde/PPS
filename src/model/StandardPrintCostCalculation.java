@@ -78,7 +78,11 @@ public class StandardPrintCostCalculation implements PrintCostCalculator {
 	}
 
 	public double getPromoDiscount(int quantity, String promoCode) {
-		if (quantity == 100 && promoCode.equals("N56M2")) {
+		//BUG:  Applies discount code for any string that equals 5 characters instead of checking if string equals "N56M2"
+		if (quantity == 100 && promoCode.length() == 5) {
+			
+		//This is correct code.
+		//if (quantity == 100 && promoCode.equals("N56M2")) {
 			return -2.00;
 		}
 		return 0.0;

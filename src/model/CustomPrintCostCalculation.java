@@ -47,13 +47,21 @@ public class CustomPrintCostCalculation implements PrintCostCalculator {
 	@Override
 	public double getProcessingTimeCost(int quantity, String processingTime) 
 	{
-		if (processingTime.equals("1-Hour")) {
-			if (quantity >= 1 && quantity <= 60) {
-				return 2.00;
-			} else if (quantity >= 61 && quantity <= 100){ 
-				return 2.50;
-			}
+		//BUG: Does not check for 1-Hour or next day.  Just applies 1-Hour processing time cost to all.
+		if (quantity >= 1 && quantity <= 60) {
+			return 2.00;
+		} else if (quantity >= 61 && quantity <= 100){ 
+			return 2.50;
 		}
+		
+		//This is correct code.
+		//if (processingTime.equals("1-Hour")) {
+		//	if (quantity >= 1 && quantity <= 60) {
+		//		return 2.00;
+		//	} else if (quantity >= 61 && quantity <= 100){ 
+		//		return 2.50;
+		//	}
+		//}
 		return 0.0;
 	}
 }

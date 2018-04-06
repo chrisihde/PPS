@@ -236,8 +236,14 @@ public class CustomPrintView extends JFrame {
             JButton b = (JButton) aE.getSource();
             
             if (b.equals(calculateCost)) {
-            	double sizeCost4x6 = calculator.getSizeCost(getQuantity4x6(), "4 x 6");
-            	double sizeCost5x7 = calculator.getSizeCost(getQuantity5x7(), "5 x 7");
+            	//BUG:  Switched quantities gotten for 4x6 and 5x7.
+            	double sizeCost4x6 = calculator.getSizeCost(getQuantity5x7(), "4 x 6");
+            	double sizeCost5x7 = calculator.getSizeCost(getQuantity4x6(), "5 x 7");
+            	
+            	//This is correct code.
+            	//double sizeCost4x6 = calculator.getSizeCost(getQuantity4x6(), "4 x 6");
+            	//double sizeCost5x7 = calculator.getSizeCost(getQuantity5x7(), "5 x 7");
+            	
             	double sizeCost8x10 = calculator.getSizeCost(getQuantity8x10(), "8 x 10");
             	double finishCost4x6 = calculator.getFinishCost(getMatteFinish4x6(), "matte", "4 x 6");
             	double finishCost5x7 = calculator.getFinishCost(getMatteFinish5x7(), "matte", "5 x 7");
